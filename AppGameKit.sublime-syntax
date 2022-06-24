@@ -33,8 +33,10 @@ contexts:
           scope: keyword.source.agk
 
         # ProgramFlow -- Conditional:
-        - match: (?i)\b(IF|NOT|AND|OR|THEN|ELSEIF|ELSE|ENDIF)\b
+        - match: (?i)\b(IF|THEN|ELSEIF|ELSE|ENDIF)\b
           scope: keyword.source.agk
+        - match: (?i)\b(NOT|AND|OR)\b
+          scope: keyword.source.agk #keyword.operator.logical.agk
         - match: (?i)\b(SELECT|CASE|CASEDEFAULT|ENDCASE|ENDSELECT)\b
           scope: keyword.source.agk
 
@@ -79,7 +81,7 @@ contexts:
         #####################################################################################
         # Array Functions:
         - match: (?i)\.(Find|Insert|InsertSorted|Length|Remove|Reverse|Sort|Swap)\b
-          scope: support.class
+          scope: variable.function.agk
 
 
         #####################################################################################
@@ -87,72 +89,72 @@ contexts:
         # Build-in Functions -- Math:
         # Miscellaneous Operators:
         - match: (?i)\b(Abs|Ceil|Floor|Log|Mod|FMod|Pow|Round|Sqrt|Trunc)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
         # Trigonometric:
         - match: (?i)\b(Cos|ACos|Sin|ASin|Tan|ATan|ATan2|ATanFull)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
         - match: (?i)\b(CosRad|ACosRad|SinRad|ASinRad|TanRad|ATanRad|ATan2Rad|ATanFullRad)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
         # Random Number Generation:
         - match: (?i)\b(Random|Random2|RandomSign|SetRandomSeed|SetRandomSeed2)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
 
         #####################################################################################
         # Build-in Functions -- String:
         # Case:
         - match: (?i)\b(Lower|Upper)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
         # Insert:
         - match: (?i)\b(Chr|Spaces)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
         # Truncation:
         - match: (?i)\b(Left|Mid|Right)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
         - match: (?i)\b(ReplaceString|StripString|TrimString|TruncateString)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
         # Info:
         - match: (?i)\b(Asc)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
         - match: (?i)\b(ByteLen|Len)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
         # Value to String:
         - match: (?i)\b(Bin|Hex|Str)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
         # String to Value:
         - match: (?i)\b(Val|ValFloat)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
         # String to HashString:
         - match: (?i)\b(HexToBase64|StringToBase64)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
         - match: (?i)\b(Sha1|Sha256|Sha512)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
         # ...:
         - match: (?i)\b(CompareString)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
         - match: (?i)\b(CountStringTokens|CountStringTokens2|GetStringToken|GetStringToken2)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
         - match: (?i)\b(FindStringCount|FindString|FindStringReverse)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
 
         #####################################################################################
         # Build-in Functions -- Bad Vector3:
         - match: (?i)\b(CreateVector3|DeleteVector3)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
         - match: (?i)\b(GetVector3Add|GetVector3Cross|GetVector3Distance|GetVector3Dot|GetVector3Length|GetVector3Multiply|GetVector3X|GetVector3Y|GetVector3Z)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
         - match: (?i)\b(SetVector3)\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
 
         #####################################################################################
@@ -1946,7 +1948,7 @@ contexts:
             | WriteString
             | WriteString2
             )\b
-          scope: entity.name.function
+          scope: entity.name.function.agk
 
 
         #####################################################################################
@@ -1958,62 +1960,77 @@ contexts:
         #####################################################################################
         # Brackets () []:
         - match: \(|\)
-          scope: constant.numeric
+          scope: constant.numeric.agk
         - match: \[|\]
-          scope: constant.numeric
+          scope: constant.numeric.agk
 
 
         #####################################################################################
         # Numbers:
         # Bin:
         - match: (\%{1}[01]+)\b
-          scope: constant.numeric
+          scope: constant.numeric.integer.binary.agk
 
         # Hex:
         - match: \b((0x){1}[0-9a-fA-F]+)\b
-          scope: constant.numeric.integer.hexadecimal
+          scope: constant.numeric.integer.hexadecimal.agk
 
         # Float:
-        - match: (((\d*)|((?<![\d])-\d*))(((?<![\d])-\d{1}\.{1})|((?<![\d])-\.{1}\d{1})|(\d{1}\.{1})|(\.{1}\d{1})){1}\d*)
-          scope: constant.numeric
+        - match: (((\d*)|((?<![a-zA-Z\d])-\d*))(((?<![a-zA-Z\d])-\d{1}\.{1})|((?<![\d])-\.{1}\d{1})|(\d{1}\.{1})|(\.{1}\d{1})){1}\d*)
+          scope: constant.numeric.float.agk
 
         # Integer:
-        - match: ((\b((?![a-zA-Z])\d*)\b)|((?<![\d])-\d{1}\d*))
-          scope: constant.numeric
+        - match: ((\b((?![a-zA-Z])\d*)\b)|((?<![a-zA-Z\d])-\d{1}\d*))
+          scope: constant.numeric.integer.agk
 
 
         #####################################################################################
-        # User Functions
+        # User Functions:
         - match: ([_a-zA-Z0-9]+)(\()
           captures:
             1: support.function.agk
-            2: constant.numeric
+            2: constant.numeric.agk
           scope: support.function.agk
 
 
         #####################################################################################
-        # Code Comments:
+        # Comments:
         - match: (//|`|(?i)\b(REM)\b)
           push: CommentSingle
         - match: (?i)\b(REMSTART)\b
           push: CommentMulti
 
 
+        #####################################################################################
+        # Operators:
+        - match: '[-+*/%<>=]'
+          scope: keyword.operator.arithmetic.agk
+        - match: '='
+          scope: keyword.operator.assignment.agk
+        - match: '[(<<)(>>)(\&\&)(\|\|)(\~\~)]'
+          scope: keyword.operator.bitwise.agk
+
+
+        #####################################################################################
+        # Statement Terminator:
+        - match: ':'
+          scope: punctuation.terminator.agk
+
 
     ##################################################################################################################
     ##################################################################################################################
     String:
-        - meta_scope: string.quoted
+        - meta_scope: string.quoted.agk
         - match: (")
           pop: true
 
     CommentSingle:
-        - meta_scope: comment.block
+        - meta_scope: comment.line.agk
         - match: (\n)
           pop: true
 
     CommentMulti:
-        - meta_scope: comment.block
+        - meta_scope: comment.block.agk
         - match: (?i)\b(REMEND)\b
           pop: true
 
