@@ -1,0 +1,10 @@
+{
+    "target": "agk_build",
+    "working_dir": "\\$LocationOfMain",
+    "cmd": ["C:\\Program Files (x86)\\The Game Creators\\AGK2\\Tier 1\\Compiler\\AGKCompiler.exe", "-run", "main.agc"],
+    "selector": "source.agk",
+    "variants": [
+          { "cmd": ["C:\\Program Files (x86)\\The Game Creators\\AGK2\\Tier 1\\Compiler\\AGKCompiler.exe", "-agk", "main.agc"], "name": "Compile" },
+          //{ "cmd": ["C:\\Program Files (x86)\\The Game Creators\\AGK2\\Tier 1\\Compiler\\AGKCompiler.exe", "-run", "main.agc"], "name": "Compile & Run" }
+    ]
+}
