@@ -1964,14 +1964,27 @@ contexts:
 
 
         #####################################################################################
-        # Numbers
-        - match: \b\d*\.?\d*\b|\b(0x)[0-9a-fA-F]+
+        # Numbers:
+        # Bin:
+        - match: (\%{1}[01]+)\b
+          scope: constant.numeric
+
+        # Hex:
+        - match: \b((0x){1}[0-9a-fA-F]+)\b
+          scope: constant.numeric.integer.hexadecimal
+
+        # Float:
+        - match: (((\d*)|((?<![\d])-\d*))(((?<![\d])-\d{1}\.{1})|((?<![\d])-\.{1}\d{1})|(\d{1}\.{1})|(\.{1}\d{1})){1}\d*)
+          scope: constant.numeric
+
+        # Integer:
+        - match: ((\b((?![a-zA-Z])\d*)\b)|((?<![\d])-\d{1}\d*))
           scope: constant.numeric
 
 
         #####################################################################################
         # User Functions
-        - match: ([a-zA-Z0-9]+)(\()
+        - match: ([_a-zA-Z0-9]+)(\()
           captures:
             1: support.function.agk
             2: constant.numeric
