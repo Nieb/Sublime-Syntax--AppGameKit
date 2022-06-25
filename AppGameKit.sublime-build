@@ -1,5 +1,5 @@
 {
-    "target": "agk_build",
+    "target": "agk_build_helper",
     "working_dir": "\\$LocationOfMain",
     "cmd": ["C:\\Program Files (x86)\\The Game Creators\\AGK2\\Tier 1\\Compiler\\AGKCompiler.exe", "-run", "main.agc"],
     "selector": "source.agk",

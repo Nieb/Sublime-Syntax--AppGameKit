@@ -5,7 +5,7 @@ import os
 
 from Default.exec import ExecCommand
 
-class AgkBuildCommand(ExecCommand):
+class AgkBuildHelperCommand(ExecCommand):
     def run(self, **kwargs):
         variables = self.window.extract_variables()
 
