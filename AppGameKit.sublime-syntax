@@ -11,7 +11,7 @@ contexts:
         #####################################################################################
         #####################################################################################
         # CompileTime Execution:
-        - match: (?i)(#Constant|#Include|#Insert|#Option_Explicit)\b
+        - match: (?i)\#(Constant|Include|Insert|Option_Explicit)\b
           scope: keyword.source.agk
 
 
