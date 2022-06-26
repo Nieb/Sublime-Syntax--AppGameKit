@@ -1,1 +1,3 @@
 *.agc linguist-language=BlitzMax
+*.sublime-build linguist-language=JSON
+*.sublime-syntax linguist-language=YAML
