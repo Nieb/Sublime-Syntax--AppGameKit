@@ -1,6 +1,6 @@
 {
     "target": "agk_build",
-    "cancel": {"CancelBuild": true},
+    "cancel": { "CancelBuild": true },
     "selector": "source.agk, source.glsl",
     "variants": [
         { "name": "Compile & Run", "CompileAndRun": true },
