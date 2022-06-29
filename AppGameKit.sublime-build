@@ -1,10 +1,11 @@
 {
-    "target": "agk_build_helper",
-    "working_dir": "\\$LocationOfMain",
-    "cmd": ["C:\\Program Files (x86)\\The Game Creators\\AGK2\\Tier 1\\Compiler\\AGKCompiler.exe", "-run", "main.agc"],
-    "selector": "source.agk",
+    "target": "agk_build",
+    "cancel": {"CancelBuild": true},
+    "selector": "source.agk, source.glsl",
     "variants": [
-          { "cmd": ["C:\\Program Files (x86)\\The Game Creators\\AGK2\\Tier 1\\Compiler\\AGKCompiler.exe", "-agk", "main.agc"], "name": "Compile" },
-          //{ "cmd": ["C:\\Program Files (x86)\\The Game Creators\\AGK2\\Tier 1\\Compiler\\AGKCompiler.exe", "-run", "main.agc"], "name": "Compile & Run" }
+        { "name": "Compile & Run", "CompileAndRun": true },
+        //{ "name": "Compile & Broadcast", "CompileAndBroadcast": true },   Todo...
+        //{ "name": "Compile & Debug", "CompileAndDebug": true },           Todo...
     ]
 }
+
