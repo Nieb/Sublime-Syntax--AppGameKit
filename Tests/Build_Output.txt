@@ -1,0 +1,22 @@
+
+
+  main.agc:4: error: Unexpected token "End Of Line", variable must be followed by an assignment
+  main.agc:5: error: Unexpected token "End Of Line", variable must be followed by an assignment
+  main.agc:6: error: Unexpected token "End Of Line", variable must be followed by an assignment
+  main.agc:13: error: Unexpected token "End Of Line", variable must be followed by an assignment
+
+  3/blarg.agc:5: error: Unexpected token "End Of Line", variable must be followed by an assignment
+
+  test dir/3/blarg.agc:5: error: Unexpected token "End Of Line", variable must be followed by an assignment
+
+  1 2  3   4          7 8 9  1/else.agc:1: error: Unexpected token "End Of Line", variable must be followed by an assignment
+  3/1 2  3   4          7 8 9  1/something.agc:1: error: Unexpected token "End Of Line", variable must be followed by an assignment
+
+
+
+
+(?=foo)     Lookahead              Asserts that what immediately FOLLOWS the current position in the string is foo
+(?<=foo)    Lookbehind             Asserts that what immediately PRECEDES the current position in the string is foo
+(?!foo)     Negative Lookahead     Asserts that what immediately FOLLOWS the current position in the string is NOT foo
+(?<!foo)    Negative Lookbehind    Asserts that what immediately PRECEDES the current position in the string is NOT foo
+
