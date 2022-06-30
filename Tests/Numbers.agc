@@ -21,10 +21,15 @@
  -1            //       Match all of this.
 
 -abc    -abc   //       Match minus here.
--xyz    -xyz   //       Match minus here.     Blarg, I give up...
+-xyz    -xyz   //       Match minus here.   Blarg, I give up...
 
 abc123         // DON'T Match any of this.
 123abc         // DON'T Match any of this.
+
+Abc123.x       // DON'T Match any of this.
+Abc123.y       // DON'T Match any of this.
+Ab1[123].a1.b2 // DON'T Match any of this.  (Brackets are matched separately.)
+Abc12.z89.ijk  // DON'T Match any of this.
 
 - - - -        // DON'T Match lone minus.
  - - -
@@ -45,7 +50,6 @@ abc123         // DON'T Match any of this.
 2.9+1.2        // DON'T Match plus here.
 12.93+13.52    // DON'T Match plus here.
 
-
 abc.abc        // DON'T Match dots with letters.
 xyz.xyz        // DON'T Match dots with letters.
 abc.xyz        // DON'T Match dots with letters.
@@ -65,7 +69,7 @@ xyz.           // DON'T Match dots with letters.
 %1010101010+%1010101010
 %1010101010-%1010101010
 
-Blarg = %1010101010
+Abc = %1010101010
 
 1%1010101010       // Blarg, none of these are valid anyhow...
 01011%1010101010   // Blarg, none of these are valid anyhow...
@@ -84,7 +88,7 @@ z%1010101010
 0xA1B2C3D4+0xA1B2C3D4
 0xA1B2C3D4-0xA1B2C3D4
 
-Blarg = 0xA1B2C3D4
+Ijk = 0xA1B2C3D4
 
 10xA1B2C3D4
 z0xA1B2C3D4
