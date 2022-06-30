@@ -86,82 +86,13 @@ contexts:
 
         #####################################################################################
         #####################################################################################
-        # Build-in Functions -- Math:
-        # Miscellaneous Operators:
-        - match: (?i)\b(Abs|Ceil|Floor|Log|Mod|FMod|Pow|Round|Sqrt|Trunc)\b
-          scope: entity.name.function.agk
-
-        # Trigonometric:
-        - match: (?i)\b(Cos|ACos|Sin|ASin|Tan|ATan|ATan2|ATanFull)\b
-          scope: entity.name.function.agk
-        - match: (?i)\b(CosRad|ACosRad|SinRad|ASinRad|TanRad|ATanRad|ATan2Rad|ATanFullRad)\b
-          scope: entity.name.function.agk
-
-        # Random Number Generation:
-        - match: (?i)\b(Random|Random2|RandomSign|SetRandomSeed|SetRandomSeed2)\b
-          scope: entity.name.function.agk
-
-
-        #####################################################################################
-        # Build-in Functions -- String:
-        # Case:
-        - match: (?i)\b(Lower|Upper)\b
-          scope: entity.name.function.agk
-
-        # Insert:
-        - match: (?i)\b(Chr|Spaces)\b
-          scope: entity.name.function.agk
-
-        # Truncation:
-        - match: (?i)\b(Left|Mid|Right)\b
-          scope: entity.name.function.agk
-        - match: (?i)\b(ReplaceString|StripString|TrimString|TruncateString)\b
-          scope: entity.name.function.agk
-
-        # Info:
-        - match: (?i)\b(Asc)\b
-          scope: entity.name.function.agk
-        - match: (?i)\b(ByteLen|Len)\b
-          scope: entity.name.function.agk
-
-        # Value to String:
-        - match: (?i)\b(Bin|Hex|Str)\b
-          scope: entity.name.function.agk
-
-        # String to Value:
-        - match: (?i)\b(Val|ValFloat)\b
-          scope: entity.name.function.agk
-
-        # String to HashString:
-        - match: (?i)\b(HexToBase64|StringToBase64)\b
-          scope: entity.name.function.agk
-        - match: (?i)\b(Sha1|Sha256|Sha512)\b
-          scope: entity.name.function.agk
-
-        # ...:
-        - match: (?i)\b(CompareString)\b
-          scope: entity.name.function.agk
-        - match: (?i)\b(CountStringTokens|CountStringTokens2|GetStringToken|GetStringToken2)\b
-          scope: entity.name.function.agk
-        - match: (?i)\b(FindStringCount|FindString|FindStringReverse)\b
-          scope: entity.name.function.agk
-
-
-        #####################################################################################
-        # Build-in Functions -- Bad Vector3:
-        - match: (?i)\b(CreateVector3|DeleteVector3)\b
-          scope: entity.name.function.agk
-        - match: (?i)\b(GetVector3Add|GetVector3Cross|GetVector3Distance|GetVector3Dot|GetVector3Length|GetVector3Multiply|GetVector3X|GetVector3Y|GetVector3Z)\b
-          scope: entity.name.function.agk
-        - match: (?i)\b(SetVector3)\b
-          scope: entity.name.function.agk
-
-
-        #####################################################################################
         # Build-in Functions:
         - match: |-
             (?i)\b(?x:
-              ActivateSmartWatch
+              Abs
+            | ACos
+            | ACosRad
+            | ActivateSmartWatch
             | Add3DParticlesColorKeyFrame
             | Add3DParticlesForce
             | Add3DParticlesScaleKeyFrame
@@ -228,13 +159,26 @@ contexts:
             | ARSetLightEstimationMode
             | ARSetPlaneDetectionMode
             | ARSetup
+            | Asc
+            | ASin
+            | ASinRad
             | AssignTo3DPhysicsRagDollBoneObjectBone
+            | ATan
+            | ATan2
+            | ATan2Rad
+            | ATanFull
+            | ATanFullRad
+            | ATanRad
+            | Bin
+            | ByteLen
             | CacheRewardAdChartboost
             | CalculateSpritePhysicsCOM
             | CancelLocalNotification
             | CancelZipExtract
+            | Ceil
             | CheckPermission
             | ChooseRawFile
+            | Chr
             | Clear3DParticlesColors
             | Clear3DParticlesForces
             | Clear3DParticlesScales
@@ -246,7 +190,13 @@ contexts:
             | ClearScreen
             | ClearSpriteAnimationFrames
             | ClearSpriteShapes
+            | ClearTweenCamera
             | ClearTweenChain
+            | ClearTweenChar
+            | ClearTweenCustom
+            | ClearTweenObject
+            | ClearTweenSprite
+            | ClearTweenText
             | ClearURLSchemeText
             | CloneObject
             | CloneSprite
@@ -255,11 +205,16 @@ contexts:
             | CloseNetwork
             | CloseRawFolder
             | CloseZip
+            | CompareString
             | CompleteRawJoystickDetection
             | ConnectSocket
             | CopyImage
             | CopyMemblock
             | CopyNetworkMessage
+            | Cos
+            | CosRad
+            | CountStringTokens
+            | CountStringTokens2
             | CountWindowsDrives
             | Create3DParticles
             | Create3DPhysics6DOFJoint
@@ -332,6 +287,7 @@ contexts:
             | CreateTweenSprite
             | CreateTweenText
             | CreateUDPListener
+            | CreateVector3
             | CreateWeldJoint
             | CreateZip
             | Crouch3DPhysicsCharacterController
@@ -383,6 +339,7 @@ contexts:
             | DeleteTween
             | DeleteTweenChain
             | DeleteUDPListener
+            | DeleteVector3
             | DeleteVideo
             | DeleteVirtualButton
             | DeleteVirtualJoystick
@@ -421,6 +378,9 @@ contexts:
             | FileEOF
             | FileIsOpen
             | Finalize3DPhysicsRagDoll
+            | FindString
+            | FindStringCount
+            | FindStringReverse
             | FinishPulleyJoint
             | FirebaseLogEvent
             | FirebaseSetup
@@ -428,13 +388,16 @@ contexts:
             | FixEditBoxToScreen
             | FixObjectPivot
             | FixObjectToBone
+            | FixObjectToCamera
             | FixObjectToObject
             | FixParticlesToScreen
             | FixSkeleton2DToScreen
             | FixSpriteToScreen
             | FixSpriteToSkeleton2D
             | FixTextToScreen
+            | Floor
             | FlushSocket
+            | FMod
             | GameCenterAchievementsReset
             | GameCenterAchievementsShow
             | GameCenterLogin
@@ -497,6 +460,13 @@ contexts:
             | GetCameraQuatX
             | GetCameraQuatY
             | GetCameraQuatZ
+            | GetCameraWorldAngleX
+            | GetCameraWorldAngleY
+            | GetCameraWorldAngleZ
+            | GetCameraWorldQuatW
+            | GetCameraWorldQuatX
+            | GetCameraWorldQuatY
+            | GetCameraWorldQuatZ
             | GetCameraWorldX
             | GetCameraWorldY
             | GetCameraWorldZ
@@ -559,6 +529,7 @@ contexts:
             | GetEditBoxWidth
             | GetEditBoxX
             | GetEditBoxY
+            | GetErrorMode
             | GetErrorOccurred
             | GetExpansionFileError
             | GetExpansionFileProgress
@@ -577,6 +548,9 @@ contexts:
             | GetFolder
             | GetFolderCount
             | GetFontExists
+            | GetFractalX
+            | GetFractalXY
+            | GetFractalXYZ
             | GetFrameTime
             | GetFullscreenAdvertLoadedAdMob
             | GetFullscreenAdvertLoadedAmazon
@@ -694,6 +668,9 @@ contexts:
             | GetNextFile
             | GetNextFolder
             | GetNFCExists
+            | GetNoiseX
+            | GetNoiseXY
+            | GetNoiseXYZ
             | GetNumDeviceCameras
             | GetNumProcessors
             | GetObject3DPhysicsAngularDamp
@@ -1040,6 +1017,10 @@ contexts:
             | GetSpritePhysicsAngularVelocity
             | GetSpritePhysicsCOMX
             | GetSpritePhysicsCOMY
+            | GetSpritePhysicsGravityScale
+            | GetSpritePhysicsInertia
+            | GetSpritePhysicsIsAwake
+            | GetSpritePhysicsIsBullet
             | GetSpritePhysicsMass
             | GetSpritePhysicsVelocityX
             | GetSpritePhysicsVelocityY
@@ -1064,6 +1045,8 @@ contexts:
             | GetSpriteYFromWorld
             | GetStorageRemaining
             | GetStorageTotal
+            | GetStringToken
+            | GetStringToken2
             | GetSupportedShaderVaryings
             | GetSystemFontExists
             | GetTextAlignment
@@ -1101,8 +1084,11 @@ contexts:
             | GetTweenCameraPlaying
             | GetTweenChainEndTime
             | GetTweenChainPlaying
+            | GetTweenCharEndTime
             | GetTweenCharExists
             | GetTweenCharPlaying
+            | GetTweenCharTime
+            | GetTweenCustomEndTime
             | GetTweenCustomExists
             | GetTweenCustomFloat1
             | GetTweenCustomFloat2
@@ -1113,13 +1099,20 @@ contexts:
             | GetTweenCustomInteger3
             | GetTweenCustomInteger4
             | GetTweenCustomPlaying
+            | GetTweenCustomTime
             | GetTweenExists
+            | GetTweenObjectEndTime
             | GetTweenObjectExists
             | GetTweenObjectPlaying
+            | GetTweenObjectTime
+            | GetTweenSpriteEndTime
             | GetTweenSpriteExists
             | GetTweenSpritePlaying
+            | GetTweenSpriteTime
+            | GetTweenTextEndTime
             | GetTweenTextExists
             | GetTweenTextPlaying
+            | GetTweenTextTime
             | GetUDPNetworkMessage
             | GetUnassignedImageFileName
             | GetUnassignedImages
@@ -1127,6 +1120,15 @@ contexts:
             | GetUnixTime
             | GetUpdateTime
             | GetURLSchemeText
+            | GetVector3Add
+            | GetVector3Cross
+            | GetVector3Distance
+            | GetVector3Dot
+            | GetVector3Length
+            | GetVector3Multiply
+            | GetVector3X
+            | GetVector3Y
+            | GetVector3Z
             | GetVerticesProcessed
             | GetVideoDuration
             | GetVideoHeight
@@ -1154,6 +1156,8 @@ contexts:
             | GetYearFromUnix
             | GetZipExtractComplete
             | GetZipExtractProgress
+            | Hex
+            | HexToBase64
             | HostNetwork
             | HTTPDecode
             | HTTPEncode
@@ -1178,6 +1182,8 @@ contexts:
             | JoinPaths
             | Jump3DPhysicsCharacterController
             | KickNetworkClient
+            | Left
+            | Len
             | LoadConsentStatusAdMob
             | LoadFont
             | LoadFullScreenShader
@@ -1199,11 +1205,16 @@ contexts:
             | LoadSpriteShader
             | LoadSubImage
             | LoadVideo
+            | Log
+            | Log
+            | Lower
             | MakeColor
             | MakeFolder
             | MaximizeWindow
             | Message
+            | Mid
             | MinimizeApp
+            | Mod
             | Move3DPhysicsCharacterController
             | MoveCameraLocalX
             | MoveCameraLocalY
@@ -1251,10 +1262,14 @@ contexts:
             | PlayVideo
             | PlayVideoToImage
             | PlayYoutubeVideo
+            | Pow
             | Print
             | PrintC
             | PrintImage
             | PushNotificationSetup
+            | Random
+            | Random2
+            | RandomSign
             | RateApp
             | Ray3DPhysicsExist
             | RayCast3DPhysics
@@ -1273,6 +1288,7 @@ contexts:
             | Render2DFront
             | Render3D
             | RenderShadowMap
+            | ReplaceString
             | RequestAdvertRefresh
             | RequestAppReview
             | RequestConsentAdMob
@@ -1296,6 +1312,7 @@ contexts:
             | ResumeTweenObject
             | ResumeTweenSprite
             | ResumeTweenText
+            | Right
             | Rotate3DPhysicsCharacterController
             | RotateCameraGlobalX
             | RotateCameraGlobalY
@@ -1312,6 +1329,7 @@ contexts:
             | RotateObjectLocalX
             | RotateObjectLocalY
             | RotateObjectLocalZ
+            | Round
             | RunApp
             | SaveImage
             | SaveObject
@@ -1614,6 +1632,8 @@ contexts:
             | SetPrintSize
             | SetPrintSpacing
             | SetPushNotificationKeys
+            | SetRandomSeed
+            | SetRandomSeed2
             | SetRawJoystickDeadZone
             | SetRawMousePosition
             | SetRawMouseVisible
@@ -1687,6 +1707,7 @@ contexts:
             | SetSpriteGroup
             | SetSpriteImage
             | SetSpriteOffset
+            | SetSpritePhysicsAllowSleep
             | SetSpritePhysicsAngularDamping
             | SetSpritePhysicsAngularImpulse
             | SetSpritePhysicsAngularVelocity
@@ -1697,7 +1718,9 @@ contexts:
             | SetSpritePhysicsDensity
             | SetSpritePhysicsForce
             | SetSpritePhysicsFriction
+            | SetSpritePhysicsGravityScale
             | SetSpritePhysicsImpulse
+            | SetSpritePhysicsInitiallyAwake
             | SetSpritePhysicsIsBullet
             | SetSpritePhysicsIsSensor
             | SetSpritePhysicsMass
@@ -1832,6 +1855,8 @@ contexts:
             | SetTweenTextX
             | SetTweenTextY
             | SetupCloudData
+            | SetupNoise
+            | SetVector3
             | SetVideoDimensions
             | SetVideoPosition
             | SetVideoVolume
@@ -1861,6 +1886,9 @@ contexts:
             | SetWindowPosition
             | SetWindowSize
             | SetWindowTitle
+            | Sha1
+            | Sha256
+            | Sha512
             | ShareFile
             | ShareImage
             | ShareImageAndText
@@ -1874,7 +1902,10 @@ contexts:
             | ShowRewardAdAdMob
             | ShowRewardAdChartboost
             | SimplifyPath
+            | Sin
+            | SinRad
             | Sleep
+            | Spaces
             | Speak
             | SphereCast3DPhysics
             | SphereCast3DPhysicsObject
@@ -1882,6 +1913,7 @@ contexts:
             | SpriteRayCastCategory
             | SpriteRayCastGroup
             | SpriteRayCastSingle
+            | Sqrt
             | Stand3DPhysicsCharacterController
             | StartGPSTracking
             | StartScreenRecording
@@ -1908,10 +1940,19 @@ contexts:
             | StopTweenSprite
             | StopTweenText
             | StopVideo
+            | Str
+            | StringToBase64
+            | StripString
+            | Swap
             | Sync
+            | Tan
+            | TanRad
             | TerminateApp
             | TextToSpeechSetup
             | Timer
+            | TrimString
+            | Trunc
+            | TruncateString
             | TweenBounce
             | TweenEaseIn1
             | TweenEaseIn2
@@ -1936,7 +1977,10 @@ contexts:
             | UpdateTweenObject
             | UpdateTweenSprite
             | UpdateTweenText
+            | Upper
             | UseNewDefaultFonts
+            | Val
+            | ValFloat
             | VibrateDevice
             | ViewFile
             | WorldToScreenX
