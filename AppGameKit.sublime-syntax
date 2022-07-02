@@ -2051,7 +2051,7 @@ contexts:
           scope: keyword.operator.arithmetic.agk
         - match: '='
           scope: keyword.operator.assignment.agk
-        - match: '[(<<)(>>)(\&\&)(\|\|)(\~\~)]'
+        - match: '[(<<)(>>)(\&\&)(\|\|)(\~\~)(!)]'
           scope: keyword.operator.bitwise.agk
 
 
