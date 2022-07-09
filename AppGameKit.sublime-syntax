@@ -80,7 +80,7 @@ contexts:
         #####################################################################################
         #####################################################################################
         # Array Functions:
-        - match: (?i)\.(Find|Insert|InsertSorted|Length|Remove|Reverse|Sort|Swap)\b
+        - match: (?i)\.(Find|FromJSON|Insert|InsertSorted|Length|Load|Remove|Reverse|Save|Sort|Swap|ToJSON)\b
           scope: variable.function.agk
 
 
@@ -2020,7 +2020,7 @@ contexts:
           scope: constant.numeric.integer.hexadecimal.agk
 
         # Float:
-        - match: (((\d*)|((?<![a-zA-Z\d])-\d*))(((?<![a-zA-Z\d])-\d{1}\.{1})|((?<![\d])-\.{1}\d{1})|(\d{1}\.{1})|(\.{1}\d{1})){1}\d*)
+        - match: ((((?<![a-zA-Z\d])\d*)|((?<![a-zA-Z\d])-\d*))(((?<![a-zA-Z\d])-\d{1}\.{1})|((?<![\d])-\.{1}\d{1})|(\d{1}\.{1})|(\.{1}\d{1})){1}\d*)
           scope: constant.numeric.float.agk
 
         # Integer:
