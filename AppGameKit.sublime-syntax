@@ -60,13 +60,13 @@ contexts:
 
 
         #####################################################################################
-        # Bad Array Declaration:
+        # BASIC Style Array Declaration:
         - match: (?i)\b(DIM|UNDIM)\b
           scope: keyword.source.agk
 
 
         #####################################################################################
-        # Okay Assignment-Operators:
+        # BASIC Style Assignment-Operators:
         - match: (?i)\b(DEC|INC)\b
           scope: keyword.source.agk
 
