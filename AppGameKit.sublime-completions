@@ -77,17 +77,17 @@
         { "trigger": "ENDTYPE", "contents": "ENDTYPE", "kind": "keyword" },
 
 
-        // Bad Array Declaration:
+        // BASIC Style Array Declaration:
         { "trigger": "DIM"  , "contents": "DIM"  , "kind": "keyword" },
         { "trigger": "UNDIM", "contents": "UNDIM", "kind": "keyword" },
 
 
-        // Okay Assignment-Operators:
+        // BASIC Style Assignment-Operators:
         { "trigger": "DEC", "contents": "DEC", "kind": "keyword" },
         { "trigger": "INC", "contents": "INC", "kind": "keyword" },
 
 
-        // Comment Statements:
+        // BASIC Style Comment Statements:
         { "trigger": "REM"     , "contents": "REM"     , "kind": "keyword" },
         { "trigger": "REMSTART", "contents": "REMSTART", "kind": "keyword" },
         { "trigger": "REMEND"  , "contents": "REMEND"  , "kind": "keyword" },
