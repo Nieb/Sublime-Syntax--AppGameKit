@@ -59,7 +59,8 @@
 
 
         //  ProgramFlow -- UserFunction:
-        { "trigger": "FUNCTION"    , "contents": "FUNCTION"    , "kind": "keyword" },
+        //{ "trigger": "FUNCTION"    , "contents": "FUNCTION"    , "kind": "keyword" },
+        { "trigger": "FUNCTION"    , "contents": "FUNCTION Abc()\n    \nENDFUNCTION"    , "kind": "keyword" },
         { "trigger": "EXITFUNCTION", "contents": "EXITFUNCTION", "kind": "keyword" },
         { "trigger": "ENDFUNCTION" , "contents": "ENDFUNCTION" , "kind": "keyword" },
 
@@ -68,7 +69,7 @@
         { "trigger": "GLOBAL", "contents": "GLOBAL", "kind": "keyword" },
         { "trigger": "LOCAL" , "contents": "LOCAL" , "kind": "keyword" },
 
-        { "trigger": "REF", "contents": "REF", "kind": "keyword" },
+        { "trigger": "REF", "contents": "REF AS", "kind": "keyword" },
         { "trigger": "AS" , "contents": "AS" , "kind": "keyword" },
 
         { "trigger": "FLOAT"  , "contents": "FLOAT"  , "kind": "keyword" },
@@ -77,7 +78,8 @@
 
 
         //  UserType Declaration:
-        { "trigger": "TYPE"   , "contents": "TYPE"   , "kind": "keyword" },
+        //{ "trigger": "TYPE"   , "contents": "TYPE"   , "kind": "keyword" },
+        { "trigger": "TYPE"   , "contents": "TYPE Abc\n    Int AS INTEGER\nENDTYPE"   , "kind": "keyword" },
         { "trigger": "ENDTYPE", "contents": "ENDTYPE", "kind": "keyword" },
 
 
