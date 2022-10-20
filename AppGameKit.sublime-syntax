@@ -10,83 +10,81 @@ contexts:
     main:
         #####################################################################################
         #####################################################################################
-        # CompileTime Execution:
+        #  CompileTime Execution:
         - match: (?i)\#(Constant|Include|Insert|Option_Explicit)\b
           scope: keyword.source.agk
 
 
         #####################################################################################
-        # ProgramFlow:
+        #  ProgramFlow:
         - match: (?i)\b(GOTO|GOSUB|RETURN|END)\b
-          scope: keyword.source.agk
+          scope: keyword.control.agk
 
-        # ProgramFlow -- Loops:
+        #  ProgramFlow -- Loops:
         - match: (?i)\b(DO|LOOP)\b
-          scope: keyword.source.agk
+          scope: keyword.control.agk
         - match: (?i)\b(FOR|TO|STEP|NEXT)\b
-          scope: keyword.source.agk
+          scope: keyword.control.agk
         - match: (?i)\b(REPEAT|UNTIL)\b
-          scope: keyword.source.agk
+          scope: keyword.control.agk
         - match: (?i)\b(WHILE|ENDWHILE)\b
-          scope: keyword.source.agk
+          scope: keyword.control.agk
         - match: (?i)\b(CONTINUE|EXIT)\b
-          scope: keyword.source.agk
+          scope: keyword.control.agk
 
-        # ProgramFlow -- Conditional:
+        #  ProgramFlow -- Conditional:
         - match: (?i)\b(IF|THEN|ELSEIF|ELSE|ENDIF)\b
-          scope: keyword.source.agk
+          scope: keyword.control.conditional.agk
         - match: (?i)\b(NOT|AND|OR)\b
-          scope: keyword.source.agk #keyword.operator.logical.agk
-        - match: (?i)\b(SELECT|CASE|CASEDEFAULT|ENDCASE|ENDSELECT)\b
-          scope: keyword.source.agk
+          scope: keyword.operator.word.agk
+        - match: (?i)\b(SELECT|CASE|DEFAULT|ENDCASE|ENDSELECT)\b
+          scope: keyword.control.conditional.agk
 
-        # ProgramFlow -- UserFunction:
+        #  ProgramFlow -- UserFunction:
         - match: (?i)\b(FUNCTION|EXITFUNCTION|ENDFUNCTION)\b
-          scope: keyword.source.agk
+          scope: keyword.declaration.function.agk
 
 
         #####################################################################################
-        # Variable Declaration:
+        #  Variable Declaration:
         - match: (?i)\b(GLOBAL|LOCAL)\b
           scope: keyword.source.agk
         - match: (?i)\b(REF|AS)\b
           scope: keyword.source.agk
         - match: (?i)\b(FLOAT|INTEGER|STRING)\b
-          scope: keyword.source.agk
+          scope: storage.type.agk
 
-        # UserType Declaration:
+        #  UserType Declaration:
         - match: (?i)\b(TYPE|ENDTYPE)\b
           scope: keyword.source.agk
 
+        #  UserType Usage:
+        - match: (?i)\b(?<=\sAS|TYPE)\s+(?!FLOAT|INTEGER|STRING)([A-Za-z][A-Za-z0-9_]*)\b
+          scope: keyword.declaration.struct.agk
+
 
         #####################################################################################
-        # BASIC Style Array Declaration:
+        #  BASIC Style Array Declaration:
         - match: (?i)\b(DIM|UNDIM)\b
           scope: keyword.source.agk
 
 
         #####################################################################################
-        # BASIC Style Assignment-Operators:
+        #  BASIC Style Assignment-Operators:
         - match: (?i)\b(DEC|INC)\b
-          scope: keyword.source.agk
-
-
-        #####################################################################################
-        # End Multi-line Comment (This should never highlight, but just in case.):
-        - match: (?i)\b(REMEND)\b
-          scope: keyword.source.agk
+          scope: keyword.operator.word.agk
 
 
         #####################################################################################
         #####################################################################################
-        # Array Functions:
+        #  Array Functions:
         - match: (?i)\.(Find|FromJSON|Insert|InsertSorted|Length|Load|Remove|Reverse|Save|Sort|Swap|ToJSON)\b
           scope: variable.function.agk
 
 
         #####################################################################################
         #####################################################################################
-        # Build-in Functions:
+        #  Build-in Functions:
         - match: |-
             (?i)\b(?x:
               Abs
@@ -1992,88 +1990,102 @@ contexts:
             | WriteString
             | WriteString2
             )\b
-          scope: entity.name.function.agk
+          scope: support.function.agk
 
 
         #####################################################################################
-        # "String":
+        #  "String":
         - match: '"'
-          push: String
+          scope: punctuation.definition.string.begin.agk
+          push:
+            - meta_scope: string.quoted.double.agk
+            - match: '"'
+              scope: punctuation.definition.string.end.agk
+              pop: true
 
 
         #####################################################################################
-        # Brackets () []:
+        #  Braces{}:
+        #- match: \{|\}
+        #  scope: constant.numeric.agk
+
+        #  Parentheses():
         - match: \(|\)
           scope: constant.numeric.agk
+
+        #  Brackets[]:
         - match: \[|\]
           scope: constant.numeric.agk
 
 
         #####################################################################################
-        # Numbers:
-        # Bin:
+        #  Numbers:
+        #  Bin:
         - match: (\%{1}[01]+)\b
           scope: constant.numeric.integer.binary.agk
 
-        # Hex:
+        #  Hex:
         - match: \b((0x){1}[0-9a-fA-F]+)\b
           scope: constant.numeric.integer.hexadecimal.agk
 
-        # Float:
+        #  Float:
         - match: ((((?<![a-zA-Z\d])\d*)|((?<![a-zA-Z\d])-\d*))(((?<![a-zA-Z\d])-\d{1}\.{1})|((?<![\d])-\.{1}\d{1})|(\d{1}\.{1})|(\.{1}\d{1})){1}\d*)
           scope: constant.numeric.float.agk
 
-        # Integer:
+        #  Integer:
         - match: ((\b((?![a-zA-Z])\d*)\b)|((?<![a-zA-Z\d])-\d{1}\d*))
           scope: constant.numeric.integer.agk
 
 
         #####################################################################################
-        # User Functions:
-        - match: ([_a-zA-Z0-9]+)(\()
-          captures:
-            1: support.function.agk
-            2: constant.numeric.agk
-          scope: support.function.agk
+        #  Comments:
+        - match: (\/\/)
+          scope: comment.line.agk
+          push:
+            - meta_scope: comment.line.agk
+            - match: (\n)
+              pop: true
 
-
-        #####################################################################################
-        # Comments:
-        - match: (//|`|(?i)\b(REM)\b)
-          push: CommentSingle
         - match: (?i)\b(REMSTART)\b
-          push: CommentMulti
+          scope: comment.block.agk
+          push:
+            - meta_scope: comment.block.agk
+            - match: (?i)\b(REMEND)\b
+              pop: true
 
 
         #####################################################################################
-        # Operators:
-        - match: '[-+*/^<>=]'
+        #  Operators:
+        - match: '[(\-)(\+)(\*)(\/)(\^)(\<)(\>)(\=)]'
           scope: keyword.operator.arithmetic.agk
-        - match: '='
+
+        - match: (\=)
           scope: keyword.operator.assignment.agk
-        - match: '[(<<)(>>)(\&\&)(\|\|)(\~\~)(!)]'
+
+        - match: '[(\<\<)(\>\>)(\&\&)(\|\|)(\~\~)(\!)]'
           scope: keyword.operator.bitwise.agk
 
 
         #####################################################################################
-        # Statement Terminator:
+        #  Explicit Statement Terminator:
         - match: ':'
           scope: punctuation.terminator.agk
 
 
-    ##################################################################################################################
-    ##################################################################################################################
-    String:
-        - meta_scope: string.quoted.agk
-        - match: '"'
-          pop: true
+        #####################################################################################
+        #  User Functions:
+        #- match: ([_a-zA-Z0-9]+)(\()
+        #  captures:
+        #    1: support.function.agk
+        #    2: constant.numeric.agk
+        #  scope: support.function.agk
 
-    CommentSingle:
-        - meta_scope: comment.line.agk
-        - match: (\n)
-          pop: true
+        - match: ([_a-zA-Z0-9]+)(?=\()
+          scope: entity.name.function.agk
 
-    CommentMulti:
-        - meta_scope: comment.block.agk
-        - match: (?i)\b(REMEND)\b
-          pop: true
+
+        #####################################################################################
+        # User Variables:
+        - match: ([A-Za-z][A-Za-z0-9_]*)
+          scope: variable.other.readwrite.agk
+
