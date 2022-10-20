@@ -3,40 +3,43 @@
     "completions": [
         //##########################################################################################################################################################################
         //##########################################################################################################################################################################
-        // CompileTime Execution:
+        //  CompileTime Execution:
         { "trigger": "#Constant"       , "contents": "#Constant"       , "kind": "keyword" },
         { "trigger": "#Include"        , "contents": "#Include"        , "kind": "keyword" },
         { "trigger": "#Insert"         , "contents": "#Insert"         , "kind": "keyword" },
         { "trigger": "#Option_Explicit", "contents": "#Option_Explicit", "kind": "keyword" },
 
 
-        // ProgramFlow:
+        //  ProgramFlow:
         { "trigger": "GOTO"  , "contents": "GOTO"  , "kind": "keyword" },
         { "trigger": "GOSUB" , "contents": "GOSUB" , "kind": "keyword" },
         { "trigger": "RETURN", "contents": "RETURN", "kind": "keyword" },
         { "trigger": "END"   , "contents": "END"   , "kind": "keyword" },
 
 
-        // ProgramFlow -- Loops:
-        { "trigger": "DO"  , "contents": "DO"  , "kind": "keyword" },
+        //  ProgramFlow -- Loops:
+        //{ "trigger": "DO"  , "contents": "DO"  , "kind": "keyword" },
+        { "trigger": "DO"  , "contents": "DO\n    Print(ScreenFPS())\n\n    Sync()\nLOOP"  , "kind": "keyword" },
         { "trigger": "LOOP", "contents": "LOOP", "kind": "keyword" },
 
-        { "trigger": "FOR" , "contents": "FOR" , "kind": "keyword" },
+        //{ "trigger": "FOR" , "contents": "FOR" , "kind": "keyword" },
+        { "trigger": "FOR" , "contents": "FOR iAbc = 0 TO Abc.length\n    Print(Abc[iAbc])\nNEXT iAbc" , "kind": "keyword" },
         { "trigger": "TO"  , "contents": "TO"  , "kind": "keyword" },
         { "trigger": "STEP", "contents": "STEP", "kind": "keyword" },
         { "trigger": "NEXT", "contents": "NEXT", "kind": "keyword" },
 
-        { "trigger": "REPEAT", "contents": "REPEAT", "kind": "keyword" },
+        { "trigger": "REPEAT", "contents": "REPEAT\n    INC iAbc\n    Print(iAbc)\nUNTIL iAbc = 69", "kind": "keyword" },
         { "trigger": "UNTIL" , "contents": "UNTIL" , "kind": "keyword" },
 
-        { "trigger": "WHILE"   , "contents": "WHILE"   , "kind": "keyword" },
+        //{ "trigger": "WHILE"   , "contents": "WHILE"   , "kind": "keyword" },
+        { "trigger": "WHILE"   , "contents": "WHILE iAbc <> 69\n    INC iAbc\n    Print(iAbc)\nENDWHILE"   , "kind": "keyword" },
         { "trigger": "ENDWHILE", "contents": "ENDWHILE", "kind": "keyword" },
 
         { "trigger": "CONTINUE", "contents": "CONTINUE", "kind": "keyword" },
         { "trigger": "EXIT"    , "contents": "EXIT"    , "kind": "keyword" },
 
 
-        // ProgramFlow -- Conditional:
+        //  ProgramFlow -- Conditional:
         { "trigger": "IF"    , "contents": "IF"    , "kind": "keyword" },
         { "trigger": "THEN"  , "contents": "THEN"  , "kind": "keyword" },
         { "trigger": "ELSEIF", "contents": "ELSEIF", "kind": "keyword" },
@@ -47,20 +50,21 @@
         { "trigger": "AND", "contents": "AND", "kind": "keyword" },
         { "trigger": "OR" , "contents": "OR" , "kind": "keyword" },
 
-        { "trigger": "SELECT"     , "contents": "SELECT"     , "kind": "keyword" },
-        { "trigger": "CASE"       , "contents": "CASE"       , "kind": "keyword" },
-        { "trigger": "CASEDEFAULT", "contents": "CASEDEFAULT", "kind": "keyword" },
-        { "trigger": "ENDCASE"    , "contents": "ENDCASE"    , "kind": "keyword" },
-        { "trigger": "ENDSELECT"  , "contents": "ENDSELECT"  , "kind": "keyword" },
+        //{ "trigger": "SELECT"   , "contents": "SELECT"   , "kind": "keyword" },
+        { "trigger": "SELECT"   , "contents": "SELECT iAbc\n    CASE 1 : Print(\"iAbc is 1\") : ENDCASE\n    CASE 2 : Print(\"iAbc is 2\") : ENDCASE\n    CASE DEFAULT : Print(\"iAbc is Default\") : ENDCASE\nENDSELECT"     , "kind": "keyword" },
+        { "trigger": "CASE"     , "contents": "CASE"     , "kind": "keyword" },
+        { "trigger": "DEFAULT"  , "contents": "DEFAULT"  , "kind": "keyword" },
+        { "trigger": "ENDCASE"  , "contents": "ENDCASE"  , "kind": "keyword" },
+        { "trigger": "ENDSELECT", "contents": "ENDSELECT", "kind": "keyword" },
 
 
-        // ProgramFlow -- UserFunction:
+        //  ProgramFlow -- UserFunction:
         { "trigger": "FUNCTION"    , "contents": "FUNCTION"    , "kind": "keyword" },
         { "trigger": "EXITFUNCTION", "contents": "EXITFUNCTION", "kind": "keyword" },
         { "trigger": "ENDFUNCTION" , "contents": "ENDFUNCTION" , "kind": "keyword" },
 
 
-        // Variable Declaration:
+        //  Variable Declaration:
         { "trigger": "GLOBAL", "contents": "GLOBAL", "kind": "keyword" },
         { "trigger": "LOCAL" , "contents": "LOCAL" , "kind": "keyword" },
 
@@ -72,22 +76,22 @@
         { "trigger": "STRING" , "contents": "STRING" , "kind": "keyword" },
 
 
-        // UserType Declaration:
+        //  UserType Declaration:
         { "trigger": "TYPE"   , "contents": "TYPE"   , "kind": "keyword" },
         { "trigger": "ENDTYPE", "contents": "ENDTYPE", "kind": "keyword" },
 
 
-        // BASIC Style Array Declaration:
+        //  BASIC Style Array Declaration:
         { "trigger": "DIM"  , "contents": "DIM"  , "kind": "keyword" },
         { "trigger": "UNDIM", "contents": "UNDIM", "kind": "keyword" },
 
 
-        // BASIC Style Assignment-Operators:
+        //  BASIC Style Assignment-Operators:
         { "trigger": "DEC", "contents": "DEC", "kind": "keyword" },
         { "trigger": "INC", "contents": "INC", "kind": "keyword" },
 
 
-        // BASIC Style Comment Statements:
+        //  BASIC Style Comment Statements:
         { "trigger": "REM"     , "contents": "REM"     , "kind": "keyword" },
         { "trigger": "REMSTART", "contents": "REMSTART", "kind": "keyword" },
         { "trigger": "REMEND"  , "contents": "REMEND"  , "kind": "keyword" },
@@ -95,7 +99,7 @@
 
         //##########################################################################################################################################################################
         //##########################################################################################################################################################################
-        // Array Functions:
+        //  Array Functions:
         { "trigger": ".Find"        , "contents": ".Find("        , "kind": "function" },
         { "trigger": ".FromJSON"    , "contents": ".FromJSON("    , "kind": "function" },
         { "trigger": ".Insert"      , "contents": ".Insert("      , "kind": "function" },
@@ -112,7 +116,7 @@
 
         //##########################################################################################################################################################################
         //##########################################################################################################################################################################
-        // Build-in Functions:
+        //  Build-in Functions:
         { "trigger": "Abs"                                               , "contents": "Abs("                                               , "kind": "function" },
         { "trigger": "ACos"                                              , "contents": "ACos("                                              , "kind": "function" },
         { "trigger": "ACosRad"                                           , "contents": "ACosRad("                                           , "kind": "function" },
