@@ -48,7 +48,7 @@ contexts:
         #####################################################################################
         #  Variable Declaration:
         - match: (?i)\b(GLOBAL|LOCAL)\b
-          scope: keyword.source.agk
+          scope: storage.modifier.agk
         - match: (?i)\b(REF|AS)\b
           scope: keyword.source.agk
         - match: (?i)\b(FLOAT|INTEGER|STRING)\b
@@ -2074,12 +2074,6 @@ contexts:
 
         #####################################################################################
         #  User Functions:
-        #- match: ([_a-zA-Z0-9]+)(\()
-        #  captures:
-        #    1: support.function.agk
-        #    2: constant.numeric.agk
-        #  scope: support.function.agk
-
         - match: ([_a-zA-Z0-9]+)(?=\()
           scope: entity.name.function.agk
 
