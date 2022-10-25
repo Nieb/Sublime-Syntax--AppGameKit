@@ -19,20 +19,20 @@
 
         //  ProgramFlow -- Loops:
         //{ "trigger": "DO"  , "contents": "DO"  , "kind": "keyword" },
-        { "trigger": "DO"  , "contents": "DO\n    Print(ScreenFPS())\n\n    Sync()\nLOOP"  , "kind": "keyword" },
+        { "trigger": "DO"  , "contents": "DO\n    Print(ScreenFPS())\n    $0\n    Sync()\nLOOP"  , "kind": "keyword" },
         { "trigger": "LOOP", "contents": "LOOP", "kind": "keyword" },
 
         //{ "trigger": "FOR" , "contents": "FOR" , "kind": "keyword" },
-        { "trigger": "FOR" , "contents": "FOR iAbc = 0 TO Abc.length\n    Print(Abc[iAbc])\nNEXT iAbc" , "kind": "keyword" },
+        { "trigger": "FOR" , "contents": "FOR i${1:Idx} = 0 TO ${0:Thing}.length\n    Print(${0:Thing}[i${1:Idx}])\nNEXT i${1:Idx}" , "kind": "keyword" },
         { "trigger": "TO"  , "contents": "TO"  , "kind": "keyword" },
         { "trigger": "STEP", "contents": "STEP", "kind": "keyword" },
         { "trigger": "NEXT", "contents": "NEXT", "kind": "keyword" },
 
-        { "trigger": "REPEAT", "contents": "REPEAT\n    INC iAbc\n    Print(iAbc)\nUNTIL iAbc = 69", "kind": "keyword" },
+        { "trigger": "REPEAT", "contents": "REPEAT\n    INC $0\n    Print($0)\nUNTIL $0 = 69", "kind": "keyword" },
         { "trigger": "UNTIL" , "contents": "UNTIL" , "kind": "keyword" },
 
         //{ "trigger": "WHILE"   , "contents": "WHILE"   , "kind": "keyword" },
-        { "trigger": "WHILE"   , "contents": "WHILE iAbc <> 69\n    INC iAbc\n    Print(iAbc)\nENDWHILE"   , "kind": "keyword" },
+        { "trigger": "WHILE"   , "contents": "WHILE ${0:Thing} <> 69\n    INC ${0:Thing}\n    Print(${0:Thing})\nENDWHILE"   , "kind": "keyword" },
         { "trigger": "ENDWHILE", "contents": "ENDWHILE", "kind": "keyword" },
 
         { "trigger": "CONTINUE", "contents": "CONTINUE", "kind": "keyword" },
@@ -51,7 +51,7 @@
         { "trigger": "OR" , "contents": "OR" , "kind": "keyword" },
 
         //{ "trigger": "SELECT"   , "contents": "SELECT"   , "kind": "keyword" },
-        { "trigger": "SELECT"   , "contents": "SELECT iAbc\n    CASE 1 : Print(\"iAbc is 1\") : ENDCASE\n    CASE 2 : Print(\"iAbc is 2\") : ENDCASE\n    CASE DEFAULT : Print(\"iAbc is Default\") : ENDCASE\nENDSELECT"     , "kind": "keyword" },
+        { "trigger": "SELECT"   , "contents": "SELECT $0\n    CASE 1 : Print(\"$0 is 1\") : ENDCASE\n    CASE 2 : Print(\"$0 is 2\") : ENDCASE\n    CASE DEFAULT : Print(\"$0 is Default\") : ENDCASE\nENDSELECT"     , "kind": "keyword" },
         { "trigger": "CASE"     , "contents": "CASE"     , "kind": "keyword" },
         { "trigger": "DEFAULT"  , "contents": "DEFAULT"  , "kind": "keyword" },
         { "trigger": "ENDCASE"  , "contents": "ENDCASE"  , "kind": "keyword" },
@@ -60,7 +60,7 @@
 
         //  ProgramFlow -- UserFunction:
         //{ "trigger": "FUNCTION"    , "contents": "FUNCTION"    , "kind": "keyword" },
-        { "trigger": "FUNCTION"    , "contents": "FUNCTION Abc()\n    \nENDFUNCTION"    , "kind": "keyword" },
+        { "trigger": "FUNCTION"    , "contents": "FUNCTION $0()\n    \nENDFUNCTION", "kind": "keyword" },
         { "trigger": "EXITFUNCTION", "contents": "EXITFUNCTION", "kind": "keyword" },
         { "trigger": "ENDFUNCTION" , "contents": "ENDFUNCTION" , "kind": "keyword" },
 
