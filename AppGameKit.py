@@ -84,8 +84,8 @@ class AgkBuildCommand(sublime_plugin.WindowCommand):
         #==================================================================================================================================================
         # Find "main.agc".
         WorkingDir = BuildVariables["file_path"]
-        BackSlashCount = WorkingDir.count("\\")-1
 
+        BackSlashCount = WorkingDir.count("\\")-1
         SearchDepth = BuildSettings.get("FindMainAgcDepth", 0)
         SearchDepth = max(SearchDepth,              0) # Not less-than 0.
         SearchDepth = min(SearchDepth, BackSlashCount) # Not greater-than number of parent dirs.
