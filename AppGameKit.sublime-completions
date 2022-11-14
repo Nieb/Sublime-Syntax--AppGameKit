@@ -64,9 +64,9 @@
         { "trigger": "LOCAL" , "contents": "LOCAL ${1:Something} AS ${0:Type}"  },
         //{ "trigger": "REF", "contents": "REF AS " },
         //{ "trigger": "AS" , "contents": "AS "  },
-        { "trigger": "FLOAT"  , "contents": "FLOAT${1:[${0:-1}]}"   },
-        { "trigger": "INTEGER", "contents": "INTEGER${1:[${0:-1}]}" },
-        { "trigger": "STRING" , "contents": "STRING${1:[${0:-1}]}"  },
+        { "trigger": "FLOAT"  , "contents": "FLOAT"   }, //{ "trigger": "FLOAT"  , "contents": "FLOAT${1:[${0:-1}]}"   },
+        { "trigger": "INTEGER", "contents": "INTEGER" }, //{ "trigger": "INTEGER", "contents": "INTEGER${1:[${0:-1}]}" },
+        { "trigger": "STRING" , "contents": "STRING"  }, //{ "trigger": "STRING" , "contents": "STRING${1:[${0:-1}]}"  },
 
 
         //  UserType Declaration:
