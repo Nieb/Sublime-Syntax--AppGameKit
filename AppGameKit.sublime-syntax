@@ -58,19 +58,19 @@ contexts:
         - match: (?i)\b(TYPE|ENDTYPE)\b
           scope: keyword.source.agk
 
-        #  UserType Usage:
-        - match: (?i)\b(?<=\sAS|TYPE)\s+(?!FLOAT|INTEGER|STRING)([A-Za-z][A-Za-z0-9_]*)\b
+        #  UserType Naming/Usage:
+        - match: (?i)\b(?<=\sAS|TYPE)\s+(?!FLOAT|INTEGER|STRING)([A-Za-z_][A-Za-z0-9_]*)\b
           scope: keyword.declaration.struct.agk
 
 
         #####################################################################################
-        #  BASIC Style Array Declaration:
+        #  BASIC-Style Array Declaration:
         - match: (?i)\b(DIM|UNDIM)\b
           scope: keyword.source.agk
 
 
         #####################################################################################
-        #  BASIC Style Assignment-Operators:
+        #  BASIC-Style Assignment-Operators:
         - match: (?i)\b(DEC|INC)\b
           scope: keyword.operator.word.agk
 
