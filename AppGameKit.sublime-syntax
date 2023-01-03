@@ -2056,14 +2056,32 @@ contexts:
 
         #####################################################################################
         #  Operators:
-        - match: '[(\-)(\+)(\*)(\/)(\^)(\<)(\>)(\=)]'
+        - match: |-
+            (?x:
+            | \<\<
+            | \>\>
+            | \&\&
+            | \|\|
+            | \~\~
+            | \!
+            )
+          scope: keyword.operator.bitwise.agk
+
+        - match: |-
+            (?x:
+            | \-
+            | \+
+            | \*
+            | \/
+            | \^
+            | \<
+            | \>
+            | \=
+            )
           scope: keyword.operator.arithmetic.agk
 
-        - match: (\=)
-          scope: keyword.operator.assignment.agk
-
-        - match: '[(\<\<)(\>\>)(\&\&)(\|\|)(\~\~)(\!)]'
-          scope: keyword.operator.bitwise.agk
+        #- match: (\=)
+        #  scope: keyword.operator.assignment.agk
 
 
         #####################################################################################
