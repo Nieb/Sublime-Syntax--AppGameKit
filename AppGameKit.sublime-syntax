@@ -2074,14 +2074,19 @@ contexts:
             | \*
             | \/
             | \^
+            )
+          scope: keyword.operator.arithmetic.agk
+
+        - match: |-
+            (?x:
             | \<
             | \>
             | \=
             )
-          scope: keyword.operator.arithmetic.agk
+          scope: keyword.operator.comparison.agk
 
-        #- match: (\=)
-        #  scope: keyword.operator.assignment.agk
+        - match: (\=)
+          scope: keyword.operator.assignment.agk
 
 
         #####################################################################################
