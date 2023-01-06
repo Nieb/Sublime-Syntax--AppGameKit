@@ -10,6 +10,24 @@ contexts:
     main:
         #####################################################################################
         #####################################################################################
+        #  Comments:
+        - match: (\/\/)
+          scope: comment.line.agk
+          push:
+            - meta_scope: comment.line.agk
+            - match: (\n)
+              pop: true
+
+        - match: (?i)\b(REMSTART)\b
+          scope: comment.block.agk
+          push:
+            - meta_scope: comment.block.agk
+            - match: (?i)\b(REMEND)\b
+              pop: true
+
+
+        #####################################################################################
+        #####################################################################################
         #  CompileTime Execution:
         - match: (?i)\#(Constant|Include|Insert|Option_Explicit)\b
           scope: keyword.source.agk
@@ -2005,17 +2023,17 @@ contexts:
 
 
         #####################################################################################
-        #  Braces{}:
+        #  {Braces}:
         #- match: \{|\}
-        #  scope: constant.numeric.agk
+        #  scope: punctuation.section.braces.agk
 
-        #  Parentheses():
-        - match: \(|\)
-          scope: constant.numeric.agk
-
-        #  Brackets[]:
+        #  [Brackets]:
         - match: \[|\]
-          scope: constant.numeric.agk
+          scope: punctuation.section.brackets.agk
+
+        #  (Parentheses):
+        - match: \(|\)
+          scope: punctuation.section.parens.agk
 
 
         #####################################################################################
@@ -2035,23 +2053,6 @@ contexts:
         #  Integer:
         - match: ((\b((?![a-zA-Z])\d*)\b)|((?<![a-zA-Z\d])-\d{1}\d*))
           scope: constant.numeric.integer.agk
-
-
-        #####################################################################################
-        #  Comments:
-        - match: (\/\/)
-          scope: comment.line.agk
-          push:
-            - meta_scope: comment.line.agk
-            - match: (\n)
-              pop: true
-
-        - match: (?i)\b(REMSTART)\b
-          scope: comment.block.agk
-          push:
-            - meta_scope: comment.block.agk
-            - match: (?i)\b(REMEND)\b
-              pop: true
 
 
         #####################################################################################
