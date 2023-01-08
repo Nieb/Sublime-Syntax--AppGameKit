@@ -1,13 +1,14 @@
 {
-    "extensions": ["agc"],
+    "extensions": [ "agc" ],
 
     "AGKBroadcaster": "C:\\Program Files (x86)\\The Game Creators\\AGK2\\Tier 1\\Compiler\\AGKBroadcaster.exe",
     "AGKCompiler":    "C:\\Program Files (x86)\\The Game Creators\\AGK2\\Tier 1\\Compiler\\AGKCompiler.exe",
 
     "Use64bitInterpreter": false,
 
-    // Compiler does not support build output location, EXE will always be created in same dir as "main.agc" with FileName equal to ParentDir.
-    // However, we can have other source files in sub dirs.
-    // This is the number of parent directories, in addition to current directory, it will check to find "main.agc":
+    //  Compiler does not support build output location,
+    //  interpreter.EXE will always be created in same directory as "main.agc" with FileName equal to containing directory.
+    //  However, we can have other source files in sub directories.
+    //  This is the number of parent directories, in addition to current directory, it will check to find "main.agc":
     "FindMainAgcDepth": 2
 }
