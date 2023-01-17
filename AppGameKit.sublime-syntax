@@ -28,8 +28,8 @@ contexts:
         - include: Sections
         - include: Numbers
         - include: Operators
-        - include: Separator_TypeAccessor
-        - include: Separator_Parameter
+        - include: TypeAccessor
+        - include: ParameterSeparator
         - include: StatementTerminator
         - include: User_Functions
         - include: User_Variables
@@ -229,11 +229,11 @@ contexts:
 
     ###########################################################################################################################################
     ###########################################################################################################################################
-    Separator_TypeAccessor:
+    TypeAccessor:
         - match: (\.)
           scope: punctuation.accessor.agk
 
-    Separator_Parameter:
+    ParameterSeparator:
         - match: (\,)
           scope: punctuation.separator.agk
 
