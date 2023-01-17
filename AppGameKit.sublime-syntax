@@ -22,8 +22,8 @@ contexts:
         - include: User_TypeNamingUsage
         - include: BasicStyle_ArrayDeclaration
         - include: BasicStyle_AssignmentOperators
-        - include: BuildIn_FunctionsArray
-        - include: BuildIn_Functions
+        - include: BuiltIn_FunctionsArray
+        - include: BuiltIn_Functions
         - include: Strings
         - include: Sections
         - include: Numbers
@@ -112,7 +112,7 @@ contexts:
 
     ###########################################################################################################################################
     ###########################################################################################################################################
-    BuildIn_FunctionsArray:
+    BuiltIn_FunctionsArray:
         - match: (?i)\.(Find|FromJSON|Insert|InsertSorted|Length|Load|Remove|Reverse|Save|Sort|Swap|ToJSON)\b
           scope: variable.function.agk
 
@@ -300,7 +300,7 @@ contexts:
     ###########################################################################################################################################
     ###########################################################################################################################################
     ###########################################################################################################################################
-    BuildIn_Functions:
+    BuiltIn_Functions:
         - match: |-
             (?i)\b(?x:
               Abs
