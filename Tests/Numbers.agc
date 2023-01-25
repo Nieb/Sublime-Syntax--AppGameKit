@@ -28,7 +28,7 @@ abc123          // DON'T Match any of this.
 
 Abc123.x        // DON'T Match any of this.
 Abc123.y        // DON'T Match any of this.
-Ab1[ ].a1.b2    // DON'T Match any of this.  (Brackets are matched separately.)
+Ab1[ ].a1.b2    // DON'T Match any of this.
 Abc12.z89.ijk   // DON'T Match any of this.
 
 - - - -         // DON'T Match lone minus.
