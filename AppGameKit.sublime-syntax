@@ -318,7 +318,7 @@ contexts:
           scope: punctuation.definition.string.begin.agk
           push:
             - meta_scope: string.quoted.double.agk
-            - match: \"
+            - match: \"|\n
               scope: punctuation.definition.string.end.agk
               pop: true
 
