@@ -35,14 +35,14 @@
 
         //  ProgramFlow -- Conditional:
         { "trigger": "IF", "contents": "IF     ${1:Something} = 0 ${0:: }Print(\"0\")\nELSEIF ${1:Something} = 1 ${0:: }Print(\"1\")\nELSEIF ${1:Something} = 2 ${0:: }Print(\"2\")\nELSE                 ${0:: }Print(\"~\")\nENDIF" },
-        //{ "trigger": "IF", "contents": "IF" },
+        //{ "trigger": "IF",     "contents": "IF"     },
         //{ "trigger": "ELSEIF", "contents": "ELSEIF" },
-        //{ "trigger": "ELSE", "contents": "ELSE" },
-        //{ "trigger": "ENDIF", "contents": "ENDIF" },
-        //{ "trigger": "NOT", "contents": "NOT " },
-        //{ "trigger": "AND", "contents": "AND " },
-        //{ "trigger": "OR", "contents": "OR " },
-        //{ "trigger": "THEN", "contents": "THEN " },
+        //{ "trigger": "ELSE",   "contents": "ELSE"   },
+        //{ "trigger": "ENDIF",  "contents": "ENDIF"  },
+        //{ "trigger": "NOT",    "contents": "NOT "   },
+        //{ "trigger": "AND",    "contents": "AND "   },
+        //{ "trigger": "OR",     "contents": "OR "    },
+        //{ "trigger": "THEN",   "contents": "THEN "  },
 
         { "trigger": "SELECT"   , "contents": "SELECT ${0:Something}\n\tCASE 1 : Print(\"${0:Something} is 1\") : ENDCASE\n\tCASE 2 : Print(\"${0:Something} is 2\") : ENDCASE\n\tCASE DEFAULT : Print(\"${0:Something} is Default\") : ENDCASE\nENDSELECT"      },
         //{ "trigger": "SELECT"   , "contents": "SELECT"    },
@@ -52,14 +52,16 @@
         //{ "trigger": "ENDSELECT", "contents": "ENDSELECT" },
 
 
-        //  ProgramFlow -- UserFunction:
+        //##########################################################################################################################################################################
+        //##########################################################################################################################################################################
+        //  Declaration -- Function:
         { "trigger": "FUNCTION", "contents": "FUNCTION $0()\n\t\nENDFUNCTION" },
         { "trigger": "EXITFUNCTION", "contents": "EXITFUNCTION" },
         //{ "trigger": "FUNCTION", "contents": "FUNCTION" },
         //{ "trigger": "ENDFUNCTION", "contents": "ENDFUNCTION" },
 
 
-        //  Variable Declaration:
+        //  Declaration -- Variable:
         { "trigger": "GLOBAL", "contents": "GLOBAL ${1:Something} AS ${0:Type}" },
         { "trigger": "LOCAL" , "contents": "LOCAL ${1:Something} AS ${0:Type}"  },
         //{ "trigger": "REF", "contents": "REF AS " },
@@ -69,23 +71,25 @@
         { "trigger": "STRING" , "contents": "STRING"  }, //{ "trigger": "STRING" , "contents": "STRING${1:[${0:-1}]}"  },
 
 
-        //  UserType Declaration:
-        { "trigger": "TYPE"   , "contents": "TYPE ${1:TypeName}\n\t${2:Something} AS ${0:Type}\nENDTYPE" },
+        //  Declaration -- Type:
+        { "trigger": "TYPE", "contents": "TYPE ${1:TypeName}\n\t${2:Something} AS ${0:Type}\nENDTYPE" },
         //{ "trigger": "TYPE"   , "contents": "TYPE"    },
         //{ "trigger": "ENDTYPE", "contents": "ENDTYPE" },
 
 
-        //  BASIC Style Array Declaration:
+        //##########################################################################################################################################################################
+        //##########################################################################################################################################################################
+        //  BASIC Style -- Array Declaration:
         //{ "trigger": "DIM"  , "contents": "DIM"   },
         //{ "trigger": "UNDIM", "contents": "UNDIM" },
 
 
-        //  BASIC Style Assignment-Operators:
+        //  BASIC Style -- Assignment-Operators:
         //{ "trigger": "DEC", "contents": "DEC" },
         //{ "trigger": "INC", "contents": "INC" },
 
 
-        //  BASIC Style Comment Statements:
+        //  BASIC Style -- Comments:
         //{ "trigger": "REM"     , "contents": "REM"      },
         //{ "trigger": "REMSTART", "contents": "REMSTART" },
         //{ "trigger": "REMEND"  , "contents": "REMEND"   },
@@ -111,7 +115,16 @@
 
         //##########################################################################################################################################################################
         //##########################################################################################################################################################################
-        //  Build-in Functions:
+        //  CompileTime Execution:
+        { "trigger": "#Constant"       , "contents": "#Constant"        },
+        { "trigger": "#Include"        , "contents": "#Include"         },
+        { "trigger": "#Insert"         , "contents": "#Insert"          },
+        { "trigger": "#Option_Explicit", "contents": "#Option_Explicit" },
+
+
+        //##########################################################################################################################################################################
+        //##########################################################################################################################################################################
+        //  Functions -- Built-in:
         { "trigger": "Abs"                                               , "contents": "Abs($0)"                                                },
         { "trigger": "ACos"                                              , "contents": "ACos($0)"                                               },
         { "trigger": "ACosRad"                                           , "contents": "ACosRad($0)"                                            },
@@ -2015,11 +2028,6 @@
         { "trigger": "WriteString2"                                      , "contents": "WriteString2($0)"                                       },
 
 
-        //  CompileTime Execution:
-        { "trigger": "#Constant"       , "contents": "#Constant"        },
-        { "trigger": "#Include"        , "contents": "#Include"         },
-        { "trigger": "#Insert"         , "contents": "#Insert"          },
-        { "trigger": "#Option_Explicit", "contents": "#Option_Explicit" },
         //##########################################################################################################################################################################
         //##########################################################################################################################################################################
     ]
