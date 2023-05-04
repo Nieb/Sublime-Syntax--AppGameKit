@@ -58,21 +58,20 @@ contexts:
     ###########################################################################################################################################
     ###########################################################################################################################################
     Comments:
+        - match: (?i)(REMSTART)
+          scope: comment.block.agk
+          push:
+            - meta_scope: comment.block.agk
+
+            - match: (?i)(REMEND)
+              pop: true
+
         - match: (\/\/|REM)
           scope: comment.line.agk
           push:
             - meta_scope: comment.line.agk
 
             - match: (\n)
-              pop: true
-
-
-        - match: (?i)\b(REMSTART)\b
-          scope: comment.block.agk
-          push:
-            - meta_scope: comment.block.agk
-
-            - match: (?i)\b(REMEND)\b
               pop: true
 
 
