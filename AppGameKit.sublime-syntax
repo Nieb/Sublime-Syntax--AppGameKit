@@ -62,7 +62,6 @@ contexts:
           scope: comment.block.agk
           push:
             - meta_scope: comment.block.agk
-
             - match: (?i)(REMEND)
               pop: true
 
@@ -70,7 +69,6 @@ contexts:
           scope: comment.line.agk
           push:
             - meta_scope: comment.line.agk
-
             - match: (\n)
               pop: true
 
