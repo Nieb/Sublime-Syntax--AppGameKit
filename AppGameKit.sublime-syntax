@@ -315,6 +315,15 @@ contexts:
           scope: punctuation.definition.string.begin.agk
           push:
             - meta_scope: string.quoted.double.agk
+
+            #  Escape Characters:
+            #- match: (\\n)
+            #  scope: constant.character.escape.cfg
+
+            #  Invalid Escape Characters:
+            #- match: (\^.)
+            #  scope: invalid.illegal.character.cfg
+
             - match: \"|\n
               scope: punctuation.definition.string.end.agk
               pop: true
