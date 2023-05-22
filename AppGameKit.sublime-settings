@@ -7,7 +7,7 @@
     "Use64bitInterpreter": false,
 
     //  Compiler does not support build output location,
-    //  interpreter.EXE will always be created in same directory as "main.agc" with FileName equal to containing directory.
+    //  interpreter exe will always be created in same directory as "main.agc" with FileName equal to containing directory.
     //  However, we can have other source files in sub directories.
     //  This is the number of parent directories, in addition to current directory, it will check to find "main.agc":
     "FindMainAgcDepth": 2
