@@ -15,9 +15,9 @@ contexts:
 
         - include: CompileTimeExecution
 
-        - include: ProgramFlow
-        - include: ProgramFlow_Loops
-        - include: ProgramFlow_Conditional
+        - include: Keywords
+        - include: Keywords_Conditional
+        - include: Keywords_Loops
 
         - include: Declaration_Function
         - include: Declaration_Variable
@@ -82,13 +82,21 @@ contexts:
 
     ###########################################################################################################################################
     ###########################################################################################################################################
-    ProgramFlow:
+    Keywords:
         - match: (?i)\b(GOTO|GOSUB|RETURN|END)\b
           scope: keyword.control.agk
 
+    #======================================================================================================================================
+    Keywords_Conditional:
+        - match: (?i)\b(IF|THEN|ELSEIF|ELSE|ENDIF)\b
+          scope: keyword.control.conditional.agk
+        - match: (?i)\b(NOT|AND|OR)\b
+          scope: keyword.operator.word.agk
+        - match: (?i)\b(SELECT|CASE|DEFAULT|ENDCASE|ENDSELECT)\b
+          scope: keyword.control.conditional.agk
 
     #======================================================================================================================================
-    ProgramFlow_Loops:
+    Keywords_Loops:
         - match: (?i)\b(DO|LOOP)\b
           scope: keyword.control.agk
         - match: (?i)\b(FOR|TO|STEP|NEXT)\b
@@ -101,22 +109,11 @@ contexts:
           scope: keyword.control.agk
 
 
-    #======================================================================================================================================
-    ProgramFlow_Conditional:
-        - match: (?i)\b(IF|THEN|ELSEIF|ELSE|ENDIF)\b
-          scope: keyword.control.conditional.agk
-        - match: (?i)\b(NOT|AND|OR)\b
-          scope: keyword.operator.word.agk
-        - match: (?i)\b(SELECT|CASE|DEFAULT|ENDCASE|ENDSELECT)\b
-          scope: keyword.control.conditional.agk
-
-
     ###########################################################################################################################################
     ###########################################################################################################################################
     BasicStyle_ArrayDeclaration:
         - match: (?i)\b(DIM|UNDIM)\b
           scope: keyword.declaration.agk
-
 
     #======================================================================================================================================
     BasicStyle_AssignmentOperators:
@@ -130,12 +127,10 @@ contexts:
         - match: (?i)\b(FUNCTION|EXITFUNCTION|ENDFUNCTION)\b
           scope: keyword.declaration.function.agk
 
-
     #======================================================================================================================================
     Declaration_Type:
         - match: (?i)\b(TYPE|ENDTYPE)\b
           scope: keyword.declaration.struct.agk
-
 
     #======================================================================================================================================
     Declaration_Variable:
@@ -191,7 +186,6 @@ contexts:
             )
           scope: constant.numeric.float.agk
 
-
     #======================================================================================================================================
     Numbers_Integer:
         - match: |-
@@ -215,7 +209,6 @@ contexts:
             )
           scope: constant.numeric.integer.agk
 
-
     #======================================================================================================================================
     Numbers_Integer_Bin:
         - match: |-
@@ -225,7 +218,6 @@ contexts:
                 [01]+
             )\b
           scope: constant.numeric.integer.binary.agk
-
 
     #======================================================================================================================================
     Numbers_Integer_Hex:
@@ -253,7 +245,6 @@ contexts:
             )
           scope: keyword.operator.bitwise.agk
 
-
     #======================================================================================================================================
         - match: |-
             (?x)
@@ -266,7 +257,6 @@ contexts:
             )
           scope: keyword.operator.arithmetic.agk
 
-
     #======================================================================================================================================
         - match: |-
             (?x)
@@ -276,7 +266,6 @@ contexts:
             | \=
             )
           scope: keyword.operator.comparison.agk
-
 
     #======================================================================================================================================
         - match: \=
@@ -295,12 +284,10 @@ contexts:
             )
           scope: punctuation.accessor.agk
 
-
     #======================================================================================================================================
     Punctuation_ParameterSeparator:
         - match: (\,)
           scope: punctuation.separator.agk
-
 
     #======================================================================================================================================
     Punctuation_StatementTerminator:
@@ -343,7 +330,6 @@ contexts:
 
             - include: main
 
-
     #======================================================================================================================================
     Section_Parentheses:
         - match: \(
@@ -356,7 +342,6 @@ contexts:
               pop: true
 
             - include: main
-
 
     #======================================================================================================================================
     Section_Strays:
@@ -381,7 +366,6 @@ contexts:
             | STRING
             )\b
           scope: storage.type.agk
-
 
     #======================================================================================================================================
     Types_User:
@@ -417,7 +401,6 @@ contexts:
                 (?=\()
             )
           scope: entity.name.function.agk
-
 
     #======================================================================================================================================
     Variables_User:
@@ -2373,4 +2356,3 @@ contexts:
             | WriteString2
             )\b
           scope: support.function.agk
-
