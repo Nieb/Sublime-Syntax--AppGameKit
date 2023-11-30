@@ -17,8 +17,8 @@ class AgkBuildCommand(sublime_plugin.WindowCommand):
     ###########################################################################################################################################################
     ###########################################################################################################################################################
     def is_enabled(self, CancelBuild=False):
-        # The Cancel build option should only be available when the process is still running.
         if CancelBuild:
+            # The CancelBuild option should only be available when the process is still running.
             return self.BuildProcess is not None and self.BuildProcess.poll() is None
         return True
 
