@@ -116,9 +116,9 @@
         //##########################################################################################################################################################################
         //##########################################################################################################################################################################
         //  CompileTime Execution:
-        { "trigger": "#Constant"       , "contents": "#Constant"        },
-        { "trigger": "#Include"        , "contents": "#Include"         },
-        { "trigger": "#Insert"         , "contents": "#Insert"          },
+        { "trigger": "#Constant"       , "contents": "#Constant $0"     },
+        { "trigger": "#Include"        , "contents": "#Include \"$0\""  },
+        { "trigger": "#Insert"         , "contents": "#Insert \"$0\""   },
         { "trigger": "#Option_Explicit", "contents": "#Option_Explicit" },
 
 
