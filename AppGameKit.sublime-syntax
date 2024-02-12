@@ -86,6 +86,9 @@ contexts:
         - match: (?i)\b(GOTO|GOSUB|RETURN|END)\b
           scope: keyword.control.agk
 
+        - match: (^( )*[a-zA-Z_]+[a-zA-Z_0-9]*\:)
+          scope: entity.name.goto-label.agk
+
     #======================================================================================================================================
     Keywords_Conditional:
         - match: (?i)\b(IF|THEN|ELSEIF|ELSE|ENDIF)\b
@@ -136,6 +139,7 @@ contexts:
     Declaration_Variable:
         - match: (?i)\b(GLOBAL|LOCAL)\b
           scope: storage.modifier.agk
+
         - match: (?i)\b(REF|AS)\b
           scope: keyword.declaration.agk
 
@@ -145,44 +149,18 @@ contexts:
     Numbers_Float:
         - match: |-
             (?x)
+            (?<![a-zA-Z0-9])
+            ( \- )?
             (
                 (
-                    (
-                        (?<![a-zA-Z\d])
-                        \d*
-                    )
-                |
-                    (
-                        (?<![a-zA-Z\d])
-                        \-
-                        \d*
-                    )
-                )(
-                    (
-                        (?<![a-zA-Z\d])
-                        \-
-                        \d{1}
-                        \.{1}
-                    )
-                |
-                    (
-                        (?<![\d])
-                        \-
-                        \.{1}
-                        \d{1}
-                    )
-                |
-                    (
-                        \d{1}
-                        \.{1}
-                    )
-                |
-                    (
-                        \.{1}
-                        \d{1}
-                    )
-                ){1}
-                \d*
+                    [0-9]+
+                    \.{1}
+                    [0-9]*
+                )|(
+                    [0-9]*
+                    \.{1}
+                    [0-9]+
+                )
             )
           scope: constant.numeric.float.agk
 
@@ -198,9 +176,7 @@ contexts:
                         \d*
                     )
                     \b
-                )
-            |
-                (
+                )|(
                     (?<! [a-zA-Z\d] )
                     \-
                     \d{1}
@@ -216,17 +192,20 @@ contexts:
             (
                 (\%){1}
                 [01]+
-            )\b
+            )
+            \b
           scope: constant.numeric.integer.binary.agk
 
     #======================================================================================================================================
     Numbers_Integer_Hex:
         - match: |-
             (?x)
-            \b(
+            \b
+            (
                 (0x){1}
                 [0-9a-fA-F]+
-            )\b
+            )
+            \b
           scope: constant.numeric.integer.hexadecimal.agk
 
 
@@ -236,12 +215,12 @@ contexts:
         - match: |-
             (?x)
             (
-              \<\<
-            | \>\>
-            | \&\&
-            | \|\|
-            | \~\~
-            | \!
+                  \<\<
+                | \>\>
+                | \&\&
+                | \|\|
+                | \~\~
+                | \!
             )
           scope: keyword.operator.bitwise.agk
 
@@ -249,11 +228,11 @@ contexts:
         - match: |-
             (?x)
             (
-              \-
-            | \+
-            | \*
-            | \/
-            | \^
+                  \-
+                | \+
+                | \*
+                | \/
+                | \^
             )
           scope: keyword.operator.arithmetic.agk
 
@@ -261,9 +240,9 @@ contexts:
         - match: |-
             (?x)
             (
-              \<
-            | \>
-            | \=
+                  \<
+                | \>
+                | \=
             )
           scope: keyword.operator.comparison.agk
 
@@ -278,9 +257,14 @@ contexts:
         - match: |-
             (?x)
             (
-                (?<= [a-zA-Z_0-9] | \] )
+                (?<=
+                      [a-zA-Z_0-9]
+                    | \]
+                )
                 \.
-                (?=  [a-zA-Z_] )
+                (?=
+                    [a-zA-Z_]
+                )
             )
           scope: punctuation.accessor.agk
 
@@ -348,8 +332,8 @@ contexts:
         - match: |-
             (?x)
             (
-              \]
-            | \)
+                  \]
+                | \)
             )
           scope: invalid.illegal.stray.agk
 
@@ -358,27 +342,27 @@ contexts:
     ###########################################################################################################################################
     Types_Builtin:
         - match: |-
-            (?x)
-            (?i)
-            \b(
-              FLOAT
-            | INTEGER
-            | STRING
-            )\b
+            (?x)(?i)
+            \b
+            (
+                  FLOAT
+                | INTEGER
+                | STRING
+            )
+            \b
           scope: storage.type.agk
 
     #======================================================================================================================================
     Types_User:
         - match: |-
-            (?x)
-            (?i)
+            (?x)(?i)
             \b
             (?<=\sAS|TYPE)
             \s+
             (?!FLOAT|INTEGER|STRING)
             (
-                [A-Za-z_]{1}
-                [A-Za-z_0-9]*
+                [a-zA-Z_]{1}
+                [a-zA-Z_0-9]*
             )
             \b
           scope: entity.name.type.struct
@@ -398,8 +382,8 @@ contexts:
             (
                 [a-zA-Z_]{1}
                 [a-zA-Z_0-9]+
-                (?=\()
             )
+            (?=\()
           scope: entity.name.function.agk
 
     #======================================================================================================================================
@@ -407,8 +391,8 @@ contexts:
         - match: |-
             (?x)
             (
-                [A-Za-z_]{1}
-                [A-Za-z_0-9]*
+                [a-zA-Z_]{1}
+                [a-zA-Z_0-9]*
             )
           scope: variable.other.readwrite.agk
 
@@ -423,25 +407,25 @@ contexts:
     ###########################################################################################################################################
     Functions_BuiltIn_Array:
         - match: |-
-            (?x)
-            (?i)
+            (?x)(?i)
             (
                 \.
                 (
-                  Find
-                | Insert
-                | InsertSorted
-                | Length
-                | Remove
-                | Reverse
-                | Sort
-                | Swap
-                | FromJSON
-                | ToJSON
-                | Load
-                | Save
+                      Find
+                    | Insert
+                    | InsertSorted
+                    | Length
+                    | Remove
+                    | Reverse
+                    | Sort
+                    | Swap
+                    | FromJSON
+                    | ToJSON
+                    | Load
+                    | Save
                 )
-            )\b
+            )
+            \b
           scope: variable.function.agk
 
 
@@ -2151,6 +2135,10 @@ contexts:
             | SetTextMaxWidth
             | SetTextPosition
             | SetTextScissor
+            | SetTextShader
+            | SetTextShaderConstantArrayByName
+            | SetTextShaderConstantByName
+            | SetTextShaderConstantDefault
             | SetTextSize
             | SetTextSpacing
             | SetTextString
